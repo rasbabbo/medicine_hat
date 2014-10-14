@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <meta charset="UTF-8">
+
+  <title>A simple map</title>
+
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.js'></script> 
+  
+</head>
+
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="text-center">
+        <h1 class="text-center">Close by Brews</h1>
+        <a href="/" class="btn btn-primary btn-lg active" role="button">ReSearch for Beer Place</a>
+        <a href="/logout" class="btn btn-primary btn-lg active" role="button">Logout</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-7">
+        <% beerLocation.forEach(function(data) { %>
+          <h2> <%= data.brewery.name %> </h2>
+            <h4> <%= data.phone %> </h4>
+            <h4>  
+              <a href= '<%= data.website %>' > <%= data.website %> </a> 
+            </h4>
+            <h4> <%= data.streetAddress %> </h4>
+          <p> <%= data.brewery.description %> </p>
+        <% }) %>
+      </div>
+
+      <div class="col-md-5">
+        <div id='map'></div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
+
+<script>
+
+
+L.mapbox.accessToken = 'pk.eyJ1IjoicmFzYmFiYm8iLCJhIjoiMTlySWxlSSJ9.l29Ai6S-YAuCaPeywkyX8g';
+var map = L.mapbox.map('map', 'examples.map-h67hf2ic')
+  .setView([37.7, -122.4], 12);
+
+var myLayer = L.mapbox.featureLayer().addTo(map);
+
+var blah = <%- JSON.stringify(features) %>
+
+console.log(blah)
+// The GeoJSON representing the two point features
+var geojson = {
+    type: 'FeatureCollection',
+    features: blah
+};
+
+// Pass features and a custom factory function to the map
+myLayer.setGeoJSON(geojson);
+
+  
+map.fitBounds(myLayer.getBounds());
+
+  // map.dragging.disable();
+  //map.touchZoom.disable();
+  //map.doubleClickZoom.enable();
+map.scrollWheelZoom.disable();
+  // if (map.tap) map.tap.disable();
+
+</script>

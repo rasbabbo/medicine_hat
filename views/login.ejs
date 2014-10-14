@@ -1,0 +1,30 @@
+<% include partials/header.ejs %>
+<body>
+  <h1>Login </h1>
+
+  <% if (typeof message !== 'undefined') { %>
+    <p style = "color:red;">
+    <%= message %>
+    </p>
+  <% } %>
+
+  <br>
+  <div class="container">
+    <form action="/login" method = "post">
+
+      <p>
+        <label for="user">Username:</label> <input type="text" name="username" id="user" autofocus value = <%=username %>>
+      </p>
+      <p>
+        <label for="pass">Password:</label> <input type="password" name="password" id="pass">
+      </p>
+      <p>
+        <input type="submit" value="Log In" class ="btn btn-primary">
+      </p>
+    </form>
+
+       
+    <p>test login</p>
+  </div>
+</body>
+</html>

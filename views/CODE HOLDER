@@ -1,0 +1,35 @@
+CODE HOLDER
+
+          <% var position = new google.maps.LatLng("<%= data.latitude %>","<%= data.longitude %>") %>
+        
+          <% var coord = new google.maps.Marker({ %>
+            position: position, 
+            map: map
+            }); %>
+         
+         <%= coord %>
+
+
+
+
+
+                 L.mapbox.accessToken = 'pk.eyJ1IjoicmFzYmFiYm8iLCJhIjoiMTlySWxlSSJ9.l29Ai6S-YAuCaPeywkyX8g';
+
+        var map = L.mapbox.map('map', 'examples.map-h67hf2ic')
+            .setView([37.7833, -122.4167], 9);
+
+
+        var myLayer = L.mapbox.featureLayer().addTo(map);
+
+        var stamenLayer = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png').addTo(map);
+
+        var geojson = {
+          type: 'FeatureCollection',
+          features: features
+          };
+
+       myLayer.setGeoJSON(geojson);
+  
+       map.fitBounds(myLayer.getBounds());
+
+       map.scrollWheelZoom.disable();

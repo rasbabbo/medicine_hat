@@ -1,0 +1,42 @@
+<% include partials/header.ejs %>
+
+<body>
+
+<h1> Sign Up Form</h1>
+
+    <% if(typeof message !== 'undefined') {%>
+    <div class="alert alert-danger">
+    <%= message %>
+    </div>
+    <% }%>
+
+<br>
+<form action='/signup' method = "post">
+
+  <p>
+    <label for="username">Username: </label> <input type="text" name="username" id="username" autofocus value = <%=username %>>
+  </p>
+
+  <p>
+    <label for="password">Password: </label> <input type="password" name="password" id="password">
+  </p>
+
+  <p>
+    <label for="firstname">Firstname: </label> <input type="firstname" name="firstname" id="firstname">
+  </p>
+
+  <p>
+    <label for="lastname">LastName: </label> <input type="lastname" name="lastname" id="lastname"> 
+  </p>
+  <p>
+    <label for="email">Email: </label> <input type="email" name="email" id="email">
+  </p>
+
+  <p> 
+    <input type="submit" value="Sign up!" class = "btn btn-primary">
+  </p>
+    <a href="/login">Already have an account? Log in here</a>
+</form>
+
+</body>
+</html>
