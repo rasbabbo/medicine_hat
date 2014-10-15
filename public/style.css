@@ -1,4 +1,5 @@
 body { 
+	font-family: 'Amatic SC', cursive;
 	margin:0; 
 	padding:0; 
 	color:white;
@@ -11,8 +12,6 @@ body {
 	background: linear-gradient(to bottom, rgba(102,72,37,1) 0%, rgba(102,72,37,1) 1%, rgba(227,140,41,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#664825', endColorstr='#e38c29', GradientType=0 );
 	}
-
-
 
 #map { 
 	position:fixed; 
