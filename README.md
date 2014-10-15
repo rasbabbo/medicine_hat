@@ -21,5 +21,5 @@ e. PostGreSQL
 f. Sequelize
 
 ##Website:
-http://sheltered-citadel-1183.herokuapp.com/
+http://medhat.herokuapp.com/
 
