@@ -28,4 +28,4 @@ module.exports = {
     // add reverting commands here, calling 'done' when finished
     .complete(done);
   }
-}
+};
